@@ -9,7 +9,7 @@ spring:
       auto-offset-reset: earliest
 
 server:
-  port: 8081
+  port: 8078
 
 management:
   endpoint:
