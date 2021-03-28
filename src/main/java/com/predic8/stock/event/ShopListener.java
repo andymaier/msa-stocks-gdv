@@ -27,24 +27,26 @@ public class ShopListener {
 	public void listen(Operation op) throws Exception {
 		System.out.println("op = " + op);
 
-		if(!op.getBo().equals("article")) return;
+		if(op.getBo().equals("article")) {
+			Stock stock = mapper.treeToValue(op.getObject(), Stock.class);
 
-		Stock stock = mapper.treeToValue(op.getObject(), Stock.class);
-
-		switch(op.getAction()) {
-			case "upsert":
+			switch(op.getAction()) {
+				case "upsert":
 					if(!repo.containsKey(stock.getUuid())) {
 						repo.put(stock.getUuid(), stock);
 					}
 					break;
-			case "delete":
+				case "delete":
 					repo.remove(stock.getUuid());
 					break;
-			default:
-				ObjectError oenew = new ObjectError("Error", mapper.writeValueAsString(op));
-				Operation opnew = new Operation("obejct_error", "error_catalogue", mapper.valueToTree(oenew));
-				kafka.send("shop_error", opnew);
+				default:
+					ObjectError oenew = new ObjectError("Error", mapper.writeValueAsString(op));
+					Operation opnew = new Operation("obejct_error", "error_catalogue", mapper.valueToTree(oenew));
+					kafka.send("shop_error", opnew);
+			}
+		} else if(op.getBo().equals("stock")) {
+			Stock stock = mapper.treeToValue(op.getObject(), Stock.class);
+			repo.put(stock.getUuid(), stock);
 		}
-
 	}
 }

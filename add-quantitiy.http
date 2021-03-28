@@ -1,0 +1,40 @@
+PUT http://localhost:8078/stocks/cf3f442e-5189-4fdb-828e-777a1f48a8cf
+Content-Type: application/json
+
+{
+  "uuid": "41440721-19db-4a02-8fd8-b6a0f3427d46",
+  "quantity": 150
+}
+
+###
+PUT http://localhost:8078/stocks/cca094d3-b901-4388-94a5-f59c571539f2
+Content-Type: application/json
+
+{
+  "uuid": "cca094d3-b901-4388-94a5-f59c571539f2",
+  "quantity": 150
+}
+
+###
+
+
+
+{
+  "uuid" : "cf3f442e-5189-4fdb-828e-777a1f48a8cf",
+  "quantity" : 0
+}, {
+  "uuid" : "cca094d3-b901-4388-94a5-f59c571539f2",
+  "quantity" : 0
+}, {
+  "uuid" : "5a7b1182-6732-4325-b380-fe9680f4d73a",
+  "quantity" : 0
+}, {
+  "uuid" : "33c0296c-b398-4bf4-8cfe-0457672cbce8",
+  "quantity" : 0
+}, {
+  "uuid" : "e454ba93-daf6-4461-b608-7df52dacedab",
+  "quantity" : 0
+}, {
+  "uuid" : "c82342ea-9cbf-46a9-98c7-83fe59ff8112",
+  "quantity" : 0
+} ]
